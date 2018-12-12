@@ -8,16 +8,16 @@
                     <div class="media">
                         <div align="center">
                             <img src="https://iocaffcdn.phphub.org/uploads/images/201709/20/1/PtDKbASVcz.png?imageView2/1/w/600/h/600"
-                                 class="thumbnail img-responsive" style="width: 300px; height: 300px;">
+                                 class="thumbnail img-responsive">
                         </div>
                     </div>
                     <div class="media-body">
                         <hr>
                         <h4><strong>个人简介</strong></h4>
-                        <p>Jackey will becoming a success phper.</p>
+                        <p>{{ $user->introduction }}</p>
                         <hr>
                         <h4><strong>注册于</strong></h4>
-                        <p>December 10 2018</p>
+                        <p>{{ $user->created_at->diffForHumans() }}</p>
                     </div>
                 </div>
             </div>
