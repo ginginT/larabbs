@@ -7,8 +7,7 @@
                 <div class="panel-body">
                     <div class="media">
                         <div align="center">
-                            <img src="https://iocaffcdn.phphub.org/uploads/images/201709/20/1/PtDKbASVcz.png?imageView2/1/w/600/h/600"
-                                 class="thumbnail img-responsive">
+                            <img src="{{ $user->avatar }}" class="thumbnail img-responsive">
                         </div>
                     </div>
                     <div class="media-body">

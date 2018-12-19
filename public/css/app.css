@@ -8353,7 +8353,7 @@ button.close {
 /* universal */
 
 body {
-  font-family: Hiragino Sans GB, "Hiragino Sans GB", Helvetica, "Microsoft YaHei", Arial,sans-serif;
+  font-family: Hiragino Sans GB, "Hiragino Sans GB", Helvetica, "Microsoft YaHei", Arial, sans-serif;
 }
 
 /* header */
@@ -8406,7 +8406,7 @@ body {
 /* User register page */
 
 .register-page img.captcha {
-  margin-bottom: 0px;
+  margin-bottom: 0;
   margin-top: 10px;
   cursor: pointer;
 }
@@ -8414,8 +8414,14 @@ body {
 /* User login page */
 
 .login-page img.captcha {
-  margin-bottom: 0px;
+  margin-bottom: 0;
   margin-top: 10px;
   cursor: pointer;
+}
+
+/* User profile page */
+
+.users-show-page .user-info .thumbnail {
+  margin-bottom: 0;
 }
 
