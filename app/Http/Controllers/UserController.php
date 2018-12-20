@@ -9,6 +9,13 @@ use App\Handlers\ImageUploadHandler;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', [
+            'except' => ['show']
+        ]);
+    }
+
     /**
      * 用户个人页面
      *
@@ -25,9 +32,11 @@ class UserController extends Controller
      *
      * @param User $user    自动解析用户 id 对应的实例对象
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function edit(User $user)
     {
+        $this->authorize('update', $user);
         return view('users.edit', compact('user'));
     }
 
@@ -38,9 +47,11 @@ class UserController extends Controller
      * @param User $user    自动解析用户 id 对应的实例对象
      * @param ImageUploadHandler $uploader    图片上传处理器
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(UserRequest $request, User $user, ImageUploadHandler $uploader)
     {
+        $this->authorize('update', $user);
         $data = $request->all();
 
         if ($request->avatar) {
