@@ -4,7 +4,7 @@ namespace App\Models;
 
 class Topic extends Model
 {
-    protected $fillable = ['title', 'body', 'user_id', 'category_id', 'reply_count', 'view_count', 'last_reply_user_id', 'order', 'excerpt', 'slug'];
+    protected $fillable = ['title', 'body', 'category_id', 'excerpt', 'slug'];
 
     /**
      * 关联分类，一个话题属于一个分类
@@ -38,7 +38,7 @@ class Topic extends Model
         // 不同的排序使用不同的数据读取逻辑
         switch ($order) {
             case 'recent':
-                $query->recent();
+                $query->latest();   // 框架模型自带 latest() scope，作用是根据最新时间排序
                 break;
 
             default:
@@ -61,17 +61,5 @@ class Topic extends Model
         // 当话题有新回复时，我们将编写逻辑来更新话题模型的 reply_count 属性
         // 此时会自动触发框架对数据模型 updated_at 时间戳的更新
         return $query->orderBy('updated_at', 'desc');
-    }
-
-    /**
-     * 最近发布
-     *
-     * @param $query
-     * @return mixed
-     */
-    public function scopeRecent($query)
-    {
-        // 按照创建时间排序
-        return $query->orderBy('created_at', 'desc');
     }
 }
