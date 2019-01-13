@@ -38,6 +38,16 @@ class User extends Authenticatable
     }
 
     /**
+     * 关联回复模型，一个用户拥有多条回复
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
+    }
+
+    /**
      * 用户授权
      *
      * @param $model    // 模型

@@ -27,6 +27,16 @@ class Topic extends Model
     }
 
     /**
+     * 关联用户回复，一个话题拥有多条回复
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
+    }
+
+    /**
      * 使用了本地作用域，本地作用域允许我们定义通用的约束集合以便在应用中复用
      *
      * @param $query    // 查询构建器
